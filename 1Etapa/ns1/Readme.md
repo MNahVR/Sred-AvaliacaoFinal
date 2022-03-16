@@ -1,4 +1,4 @@
-# Nesta máquina ns1 vamos configurar o serviço de resolução de nome (DNS) com o Bind9, utilizando-a como DNS Master. 
+# Na máquina ns1 vamos configurar o serviço de resolução de nome (DNS) com o Bind9, utilizando-a como DNS Master
 
 ## 1º passo - Tem que mudar o nome da maquina para o nome escolhido, e que está na tabela:
 ### ns1.grupo5.turma914.ifalara.local
@@ -13,17 +13,17 @@ $ sudo reboot
 ````
 
 ## 2º passo - Instalação do bind9.
-Antes de intalar o bind9, iremos fazer um update:
+### Antes de intalar o bind9, iremos fazer um update:
 ````
 $ sudo apt update
 ````
 
-Agora vamos instalar o bind:
+### Agora vamos instalar o bind:
 ````
 
 $ sudo apt-get install bind9 dnsutils bind9-doc
 ````
-Em seguida vamos verificar se o Bind9 está funcionando:
+### Em seguida vamos verificar se o Bind9 está funcionando:
 ````
 
 $ sudo systemctl status bind9
@@ -31,11 +31,11 @@ $ sudo systemctl status bind9
 
 ## 3º passo - Configuração dos arquivos de zonas.
 
-Antes deve-se criar o diretorio zones para alocar os nossos arquivos de zonas, com: 
+### Antes deve-se criar o diretorio zones para alocar os nossos arquivos de zonas, com: 
 ````
 $ sudo mkdir /etc/bind/zones
 ````
-Agora vamos copiar os arquivos para a pasta zones.
+### Agora vamos copiar os arquivos para a pasta zones.
 
 Zona Direta:
 ````
@@ -49,13 +49,13 @@ $  sudo cp /etc/bind/db.127 /etc/bind/zones/db.10.9.14.rev
 Obs.: o espaço de rede é 10.9.14
 ````
 
-Agora é que vamos editar o arquivo "db.grupo5.turma914.ifalara.local":
+### Agora é que vamos editar o arquivo "db.grupo5.turma914.ifalara.local":
 ````
 $ sudo nano /etc/bind/zones/db.grupo5.turma914.ifalara.local
 ````
-Nele vamos colocar os DNS e os IPs:
+### Nele vamos colocar os DNS e os IPs:
 
-RESULTADO:
+Configure, como está abaixo:
 ````
 ;
 ; BIND data file for internal network
@@ -80,15 +80,15 @@ gw.grupo5.turma914.ifalara.local.	  IN 	A	10.9.14.115
 www.grupo5.turma914.ifalara.local.	  IN 	A	10.9.14.221
 bd.grupo5.turma914.ifalara.local.	  IN 	A	10.9.14.222
 ````
-![5](https://github.com/MNahVR/Sred-Final/tree/main/1Etapa/ns1/Galeria/zonaDireta.PNG)
+![1](https://github.com/MNahVR/Sred-Final/blob/main/1Etapa/ns1/Galeria/zonaDireta.PNG)
 
-E vamos editar também o arquivo "db.10.9.14.rev":
+### E vamos editar também o arquivo "db.10.9.14.rev":
 ````
 $ sudo nano /etc/bind/zones/db.10.9.14.rev
 ````
-Nele vamos colocar os DNS e os IPs:
+### Nele vamos colocar os DNS e os IPs:
 
-RESULTADO:
+
 ````
 ;
 ; BIND reverse data file of reverse zone for local area network 10.9.14.0/24
@@ -113,7 +113,7 @@ $TTL    604800
 221   IN      PTR     www.grupo5.turma914.ifalara.local.
 222   IN      PTR     bd.grupo5.turma914.ifalara.local.
 ````
-![6](https://github.com/MNahVR/Sred-Final/tree/main/1Etapa/ns1/Galeria/zonaReversa.PNG)
+![2](https://github.com/MNahVR/Sred-Final/blob/main/1Etapa/ns1/Galeria/zonaReversa.PNG)
 
 ## 4º passo - Ativação das zonas
 
@@ -121,7 +121,6 @@ $TTL    604800
 ````
 $ sudo nano /etc/bind/named.conf.local
 ````
-RESULTADO:
 ````
 //
 // Do any local configuration here
@@ -148,7 +147,7 @@ zone "14.9.10.in-addr.arpa" IN {
 ````
 Em zones tem que ter o nome de dominio escolhido. E em "allow-transfer", tem que colocar o IP é do ns2, ou seja Slave.
 
-![4](https://github.com/MNahVR/Sred-Final/tree/main/1Etapa/ns1/Galeria/namedConfLocal.PNG)
+![3](https://github.com/MNahVR/Sred-Final/blob/main/1Etapa/ns1/Galeria/namedConfLocal.PNG)
 
 
 ## 5º passo - Verificar a sintax dos arquivos que editamos.
@@ -171,7 +170,7 @@ RESULTADO:
 zone grupo5.turma914.ifalara.local/IN: loaded serial 1
 OK
 ````
-Vamos verificar se o arquivo "db.10.9.14.rev" está ok também. Digite:
+### Vamos verificar se o arquivo "db.10.9.14.rev" está ok também. Digite:
 ````
 $ sudo named-checkzone 14.9.10.in-addr.arpa db.10.9.14.rev
 ````
@@ -180,7 +179,7 @@ RESULTADO:
 zone 14.9.10.in-addr.arpa/IN: loaded serial 1
 OK
 ````
-![2](https://github.com/MNahVR/Sred-Final/tree/main/1Etapa/ns1/Galeria/chack.PNG)
+![4](https://github.com/MNahVR/Sred-Final/blob/main/1Etapa/ns1/Galeria/chack.PNG)
 
 
 ## 6º passo - Configuração para resolver apenas IPv4.
@@ -189,7 +188,7 @@ OK
 ````
 $ sudo nano /etc/default/named
 ````
-RESULTADO:
+Configure, como está abaixo:
 ````
 # run resolvconf?
 RESOLVCONF=no
@@ -208,7 +207,6 @@ $ sudo nano /etc/netplan/00-installer-config.yaml
 ````
 ### Na interface ens160 devesse retirar os endereços de IPs e adiconar os indereçoes do Master e Sleve.
 
-RESULTADO:
 ````
 network:
   ethernets:
@@ -225,7 +223,7 @@ network:
       addresses: [192.168.14.35/29]
   version: 2
 ````
-![1](https://github.com/MNahVR/Sred-Final/tree/main/1Etapa/ns1/Galeria/00_installer_config.PNG)
+![5](https://github.com/MNahVR/Sred-Final/blob/main/1Etapa/ns1/Galeria/00_installer_config.PNG)
 
 ## 9º passo - Testar o DNS Marter.
 ````
@@ -241,4 +239,4 @@ $ systemd-resolve --status ens160
 ````
 $ ping google.com
 ````
-![3](https://github.com/MNahVR/Sred-Final/tree/main/1Etapa/ns1/Galeria/dig-system_resolve-ping.PNG)
+![6](https://github.com/MNahVR/Sred-Final/blob/main/1Etapa/ns1/Galeria/dig-system_resolve-ping.PNG)
