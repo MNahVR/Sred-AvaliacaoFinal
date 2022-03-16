@@ -80,7 +80,7 @@ gw.grupo5.turma914.ifalara.local.	  IN 	A	10.9.14.115
 www.grupo5.turma914.ifalara.local.	  IN 	A	10.9.14.221
 bd.grupo5.turma914.ifalara.local.	  IN 	A	10.9.14.222
 ````
-![5](https://github.com/MNahVR/Sred-Final/tree/main/1Etapa/Galeria/zonaDireta.PNG)
+![5](https://github.com/MNahVR/Sred-Final/tree/main/1Etapa/ns1/Galeria/zonaDireta.PNG)
 
 E vamos editar também o arquivo "db.10.9.14.rev":
 ````
@@ -113,7 +113,7 @@ $TTL    604800
 221   IN      PTR     www.grupo5.turma914.ifalara.local.
 222   IN      PTR     bd.grupo5.turma914.ifalara.local.
 ````
-![6](https://github.com/MNahVR/Sred-Final/tree/main/1Etapa/Galeria/zonaReversa.PNG)
+![6](https://github.com/MNahVR/Sred-Final/tree/main/1Etapa/ns1/Galeria/zonaReversa.PNG)
 
 ## 4º passo - Ativação das zonas
 
@@ -148,7 +148,7 @@ zone "14.9.10.in-addr.arpa" IN {
 ````
 Em zones tem que ter o nome de dominio escolhido. E em "allow-transfer", tem que colocar o IP é do ns2, ou seja Slave.
 
-![4](https://github.com/MNahVR/Sred-Final/tree/main/1Etapa/Galeria/namedConfLocal.PNG)
+![4](https://github.com/MNahVR/Sred-Final/tree/main/1Etapa/ns1/Galeria/namedConfLocal.PNG)
 
 
 ## 5º passo - Verificar a sintax dos arquivos que editamos.
@@ -180,7 +180,7 @@ RESULTADO:
 zone 14.9.10.in-addr.arpa/IN: loaded serial 1
 OK
 ````
-![2](https://github.com/MNahVR/Sred-Final/tree/main/1Etapa/Galeria/chack.PNG)
+![2](https://github.com/MNahVR/Sred-Final/tree/main/1Etapa/ns1/Galeria/chack.PNG)
 
 
 ## 6º passo - Configuração para resolver apenas IPv4.
@@ -225,7 +225,7 @@ network:
       addresses: [192.168.14.35/29]
   version: 2
 ````
-![1](https://github.com/MNahVR/Sred-Final/tree/main/1Etapa/Galeria/00_installer_config.PNG)
+![1](https://github.com/MNahVR/Sred-Final/tree/main/1Etapa/ns1/Galeria/00_installer_config.PNG)
 
 ## 9º passo - Testar o DNS Marter.
 ````
@@ -241,4 +241,4 @@ $ systemd-resolve --status ens160
 ````
 $ ping google.com
 ````
-![3](https://github.com/MNahVR/Sred-Final/tree/main/1Etapa/Galeria/dig-system_resolve-ping.PNG)
+![3](https://github.com/MNahVR/Sred-Final/tree/main/1Etapa/ns1/Galeria/dig-system_resolve-ping.PNG)
