@@ -23,17 +23,6 @@ b) implementar o GW: realizar a configuração do arquivo /etc/rc.local que reco
 c) realizar o port forwarding no rc.local para encaminhar dados para as portas 80 ( servidor Web), 445 e 139 (Samba) 
 d) Reconfigurar as interfaces do SAMBA, WWW e BD para que passem somente pelo GW.
   ````
-
-  | DESCRIÇÃO   | IP            |
-|:------------|:------------- |
-| Rede        | 10.9.14.0     |
-| Máscara     | 255.255.255.0 |
-| VirtualBox (gateway)     | 10.9.14.1      |
-| Broadcast   | 10.9.14.255  |
-| srv01         | 10.9.14.121   |
-| samba       | 10.9.14.121   |
- 
- 
  
  |          GRUPO 5					           |
  |:------------------------------------|
