@@ -2,7 +2,7 @@
 
 Repositório destinado a avaliação final da matéria de SRED
 ```
-1º Etapa:
+1º Etapa - [ns1] - (https://github.com/MNahVR/Sred-Final/blob/main/1Etapa/ns1/Readme.md) - [ns2] - (https://github.com/MNahVR/Sred-Final/blob/main/1Etapa/ns2/Readme.md)
 
 a) Apresentar as tabelas de definições de nomes e IPs para todas as VMs
 
