@@ -1,25 +1,32 @@
 # Sred - Avaliação Final
 
 ## Introdução
-Repositório destinado a avaliação final da matéria de SRED. A avaliação foi requisitada em três etapas e ao seu lado, estão os links para o passo a passo.  
+Repositório destinado a avaliação final da matéria de SRED, onde foi requisitada fazê-la em três etapas. **Ao lado de cada etapa, estão os links para o passo a passo**.  
 
 ### 1º Etapa - [ns1](https://github.com/MNahVR/Sred-Final/blob/main/1Etapa/ns1/Readme.md) - [ns2](https://github.com/MNahVR/Sred-Final/blob/main/1Etapa/ns2/Readme.md)
 
 a) Apresentar as tabelas de definições de nomes e IPs para todas as VMs
+
 b) Criar o DNS Master e Slave, conforme o nome de domínio <grupoX>.<turma9yz>.ifala.local.
+	
 c) Criar a página do github do projeto do grupo.
 
 
 ### 2º Etapa: 
 a) Apresentar as tabelas de definições de nomes e IPs para todas as VMs incluindo as novas VMs para Web e Bd
+	
 b) Criar as entradas no DNS Master para as VMs Web e Bd
+	
 c) Configurar o servidor Web (LAMP)
 
 
 ### 3º Etapa:
 a) Apresentar as tabelas de definições de nomes e IPs para todas as VMs incluindo as novas VMs para Web e Bd
+	
 b) implementar o GW: realizar a configuração do arquivo /etc/rc.local que reconfigura o firewall IPTABLES para redirecionar pacotes da rede interna para a rede externa.
+	
 c) realizar o port forwarding no rc.local para encaminhar dados para as portas 80 ( servidor Web), 445 e 139 (Samba) 
+	
 d) Reconfigurar as interfaces do SAMBA, WWW e BD para que passem somente pelo GW.
 	
  
