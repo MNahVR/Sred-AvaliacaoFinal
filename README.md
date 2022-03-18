@@ -3,7 +3,7 @@
 ## Introdução
 Repositório destinado a avaliação final da matéria de SRED, onde foi requisitada fazê-la em três etapas. **Ao lado de cada etapa, estão os links para o passo a passo**.  
 
-### 1º Etapa - [link_parte 1 ](https://github.com/MNahVR/Sred-Final/blob/main/1Etapa/Readme.md)
+### 1º Etapa - [link](https://github.com/MNahVR/Sred-Final/blob/main/1Etapa/Readme.md)
 
 a) Apresentar as tabelas de definições de nomes e IPs para todas as VMs
 
