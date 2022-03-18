@@ -44,17 +44,20 @@ c) Criar a página do github do projeto do grupo.
 ## 3. Implementação dos Serivços de Rede
 
 
-## 3.1 Na máquina ns1 vamos configurar o serviço de resolução de nome (DNS) com o Bind9, utilizando-a como DNS Master
-
-## 1º passo - Tem que mudar o nome da maquina para o nome escolhido, e que está na tabela:
-### ns1.grupo5.turma914.ifalara.local
-
+	
+## 3.1 - Configuração da máquina ns1 
+	
+### Nela vamos configurar o serviço de resolução de nome (DNS) com o Bind9, utilizando-a como DNS Master
+	
+	
+## 1º passo:
+### Tem que mudar o nome da maquina para o nome escolhido, e que está na tabela: "ns1.grupo5.turma914.ifalara.local"
 ### Com o comando:
 ```
 $ sudo hostnamectl set-hostname ns1.grupo5.turma914.ifalara.local
-
+````
 Agora vamos reiniciar a maquina para atualizar o nome:
-
+````
 $ sudo reboot
 ````
 
@@ -65,14 +68,15 @@ $ sudo apt update
 ````
 
 ### Agora vamos instalar o bind:
-````
 
+````
 $ sudo apt-get install bind9 dnsutils bind9-doc
 ````
+	
+![1](https://github.com/MNahVR/Sred-Final/blob/main/1Etapa/ns1/Galeria/1.png)
+	
 ### Em seguida vamos verificar se o Bind9 está funcionando:
 ````
-![1](https://github.com/MNahVR/Sred-Final/blob/main/1Etapa/ns1/Galeria/1.png)
-
 $ sudo systemctl status bind9
 ````
 ![2](https://github.com/MNahVR/Sred-Final/blob/main/1Etapa/ns1/Galeria/2.png)
@@ -132,10 +136,12 @@ gw.grupo5.turma914.ifalara.local.	  IN 	A	10.9.14.115
 www.grupo5.turma914.ifalara.local.	  IN 	A	10.9.14.221
 bd.grupo5.turma914.ifalara.local.	  IN 	A	10.9.14.222
 ````
-##ANTES:
+### ANTES:
+	
 ![7](https://github.com/MNahVR/Sred-Final/blob/main/1Etapa/ns1/Galeria/7.png)
 
-##DEPOIS:
+### DEPOIS:
+	
 ![8](https://github.com/MNahVR/Sred-Final/blob/main/1Etapa/ns1/Galeria/8.png)
 
 ### E vamos editar também o arquivo "db.10.9.14.rev":
@@ -171,10 +177,12 @@ $TTL    604800
 221   IN      PTR     www.grupo5.turma914.ifalara.local.
 222   IN      PTR     bd.grupo5.turma914.ifalara.local.
 ````
-##ANTES:
+### ANTES:
+	
 ![10](https://github.com/MNahVR/Sred-Final/blob/main/1Etapa/ns1/Galeria/10.png)
 
-##DEPOIS:
+### DEPOIS:
+	
 ![11](https://github.com/MNahVR/Sred-Final/blob/main/1Etapa/ns1/Galeria/11.png)
 
 ## 4º passo - Ativação das zonas
