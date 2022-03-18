@@ -8,6 +8,8 @@ Agora vamos reiniciar a maquina para atualizar o nome:
 ````
 $ sudo reboot
 ````
+![1](https://github.com/MNahVR/Sred-Final/blob/main/1Etapa/ns2/Galeria/1.png)
+
 ## 2º passo - Instalação do bind9.
 ### Antes de intalar o bind9, iremos fazer um update:
 ````
@@ -15,16 +17,19 @@ $ sudo apt update
 ````
 
 ### Agora vamos instalar o bind:
-````
 
+````
 $ sudo apt-get install bind9 dnsutils bind9-doc
 ````
-### Em seguida vamos verificar se o Bind9 está funcionando:
-````
+![2](https://github.com/MNahVR/Sred-Final/blob/main/1Etapa/ns2/Galeria/2.png)
 
+### Em seguida vamos verificar se o Bind9 está funcionando:
+
+````
 $ sudo systemctl status bind9
 ````
-![1](https://github.com/MNahVR/Sred-Final/blob/main/1Etapa/ns2/Galeria/status_bind.PNG)
+
+![3](https://github.com/MNahVR/Sred-Final/blob/main/1Etapa/ns2/Galeria/3.png)
 
 ## 3º passo - Configuração das interfaces de redes. Para isso digite:
 ````
@@ -48,7 +53,7 @@ network:
       addresses: [192.168.14.36/29]
   version: 2
 ````
-![2](https://github.com/MNahVR/Sred-Final/blob/main/1Etapa/ns2/Galeria/00-installer_config.PNG)
+![4](https://github.com/MNahVR/Sred-Final/blob/main/1Etapa/ns2/Galeria/4.png)
 
 ### Para aplicar as mudanças, digite:
 ````
@@ -58,20 +63,21 @@ $ sudo netplan apply
 ````
 $ ifconfig
 ````
-![3](https://github.com/MNahVR/Sred-Final/blob/main/1Etapa/ns2/Galeria/ifconfig.PNG)
----
+![5](https://github.com/MNahVR/Sred-Final/blob/main/1Etapa/ns2/Galeria/5.png)
 
 ## 4º passo - Verificar se o Bind está rodando
 ````
 $ sudo systemctl status bind9
 ````
-(IMG: status_bind)
+![6](https://github.com/MNahVR/Sred-Final/blob/main/1Etapa/ns2/Galeria/6.png)
 
 ### Devemos agora editar o arquivo "named.conf.local" informando que esse é o DNS Slave e qual o ip e o arquivo de DNS do Master. 
 
 ````
 $ sudo nano /etc/bind/named.conf.local
 ````
+![7](https://github.com/MNahVR/Sred-Final/blob/main/1Etapa/ns2/Galeria/7.png)
+
 ### Configure, como está abaixo:
 ````
 //
@@ -94,7 +100,7 @@ zone "14.9.10.in-addr.arpa" IN {
         masters { 10.9.14.121; };
 };
 ````
-![4](https://github.com/MNahVR/Sred-Final/blob/main/1Etapa/ns2/Galeria/named_conf_local.PNG)
+![8](https://github.com/MNahVR/Sred-Final/blob/main/1Etapa/ns2/Galeria/8.png)
 
 ### Para verificar o que foi escrito anteriormente, usasse o comando:
 ````
@@ -107,8 +113,10 @@ OBS.: Se não apareceu nem um erro então está ok.
 ````
 $ systemd-resolve --status
 ````
+![9](https://github.com/MNahVR/Sred-Final/blob/main/1Etapa/ns2/Galeria/9.png)
+
 E testar também se o nosso DNS está resolvendo o nome do google.
 ````
 $ ping google.com
 ````
-![5](https://github.com/MNahVR/Sred-Final/blob/main/1Etapa/ns2/Galeria/systemd_resolve-ping.PNG)
+![10](https://github.com/MNahVR/Sred-Final/blob/main/1Etapa/ns2/Galeria/10.png)
