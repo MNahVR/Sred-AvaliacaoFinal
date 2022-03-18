@@ -1,4 +1,4 @@
-# 1 PARTE DO PROJETO FINAL DE SRED
+# 1ª PARTE DO PROJETO FINAL DE SRED
 
 ## 1. Introdução
 ### Nessa etapa, devesse fornecer:
