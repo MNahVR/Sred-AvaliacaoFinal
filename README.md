@@ -12,7 +12,7 @@ b) Criar o DNS Master e Slave, conforme o nome de domínio <grupoX>.<turma9yz>.i
 c) Criar a página do github do projeto do grupo.
 
 
-### 2º Etapa:  [link](https://github.com/MNahVR/Sred-Final/blob/main/2Etapa/Readme.md)
+### 2º Etapa - [link](https://github.com/MNahVR/Sred-Final/blob/main/2Etapa/Readme.md)
 a) Apresentar as tabelas de definições de nomes e IPs para todas as VMs incluindo as novas VMs para Web e Bd
 	
 b) Criar as entradas no DNS Master para as VMs Web e Bd
@@ -20,7 +20,7 @@ b) Criar as entradas no DNS Master para as VMs Web e Bd
 c) Configurar o servidor Web (LAMP)
 
 
-### 3º Etapa:
+### 3º Etapa - [link](https://github.com/MNahVR/Sred-Final/blob/main/3Etapa/Readme.md) 
 a) Apresentar as tabelas de definições de nomes e IPs para todas as VMs incluindo as novas VMs para Web e Bd
 	
 b) implementar o GW: realizar a configuração do arquivo /etc/rc.local que reconfigura o firewall IPTABLES para redirecionar pacotes da rede interna para a rede externa.
