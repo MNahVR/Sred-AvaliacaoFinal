@@ -49,7 +49,8 @@ d) Reconfigurar as interfaces do SAMBA, WWW e BD para que passem somente pelo GW
 ## 3.1 Configuração SAMBA
 ### Nessa máquina devesse adicionar a resolução de nomes e o serviço de compartilhamento de arquivos SAMBA.
  
- * OBS.: Foi acordado com o professor que a máquina utilizada para ser o samba seria a mesma que está sendo o ns1
+ * OBS.: Foi acordado com o professor que a máquina utilizada para ser o samba seria a mesma que está sendo o ns1 (IP: 10.9.14.121).
+         Os prints foram "reciclados" da avaliação passada, mas é a mesma máquina.
 
 ## 1º Passo - Faça o update primeiro, e em seguida a instalação do samba
 

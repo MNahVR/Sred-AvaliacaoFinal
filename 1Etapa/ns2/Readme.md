@@ -1,4 +1,5 @@
-# Na máquina ns2, é necessário configurar o Dns Slave com os dominios corretos
+# Configuração da máquina ns2, 
+## Nela vamos configurar o Dns Slave com os dominios corretos
 
 ## 1º passo - Corrigir o nome da maquina, colocando de acordo com a planilha de acompanhamento
 ````

@@ -24,7 +24,7 @@ c) Criar a página do github do projeto do grupo.
 |:-------------|:------------  | :---------------- |
 |IP de Broadcast:|	10.9.14.255/24	|	192.168.14.39|		
 |IP do GW:|	ens160 10.9.14.115	|ens192 	192.168.14.33|
-|IP do SAMBA:	|ens160	10.9.14.104	| ens192	192.168.14.34|
+|IP do SAMBA:	|ens160	10.9.14.121	| ens192	192.168.14.|
 |IP do NS1:	|ens160	10.9.14.121	| ens192	192.168.14.35|
 |IP do NS2:	|ens160	10.9.14.129	| ens192	192.168.14.36|
 |IP do WEB	|ens160	10.9.14.221	| ens192	192.168.14.37|
@@ -35,7 +35,7 @@ c) Criar a página do github do projeto do grupo.
 |VM	Domínio | (zona): |grupo5.turma914.ifalara.local|
 |:----------|:--------|:----------------------------|			
 |Aluno29	|FQDN do GW:	|gw.grupo5.turma914.ifalara.local|
-|Aluno04	|FQDN do SAMBA:	|smb.grupo5.turma914.ifalara.local|
+|Aluno21	|FQDN do SAMBA:	|ns1.grupo5.turma914.ifalara.local|
 |Aluno21	| FQDN do NS1:	| ns1.grupo5.turma914.ifalara.local|
 |Aluno15 |	FQDN do NS2: | ns2.grupo5.turma914.ifalara.local|
 |Grupo5vm1 | FQDN do WEB	| www.grupo5.turma914.ifalara.local |
@@ -111,31 +111,6 @@ $ sudo nano /etc/bind/zones/db.grupo5.turma914.ifalara.local
 
 ### Nele vamos colocar os DNS e os IPs:
 
-Configure, como está abaixo:
-````
-;
-; BIND data file for internal network
-;
-$ORIGIN grupo5.turma914.ifalara.local.
-$TTL	3h
-@	IN	SOA	ns1.grupo5.turma914.ifalara.local. root.grupo4.turma914.ifalara.local. (
-			      2022030900		; Serial
-			      3h	; Refresh
-			      1h	; Retry
-			      1w	; Expire
-			      1h )	; Negative Cache TTL
-;nameservers
-@	IN	NS	ns1.grupo5.turma914.ifalara.local.
-@	IN	NS	ns2.grupo5.turma914.ifalara.local.
-
-;hosts
-ns1.grupo5.turma914.ifalara.local.	  IN	A	10.9.14.121
-ns2.grupo5.turma914.ifalara.local.	  IN	A	10.9.14.129
-smb.grupo5.turma914.ifalara.local.	  IN	A	10.9.14.104
-gw.grupo5.turma914.ifalara.local.	  IN 	A	10.9.14.115
-www.grupo5.turma914.ifalara.local.	  IN 	A	10.9.14.221
-bd.grupo5.turma914.ifalara.local.	  IN 	A	10.9.14.222
-````
 ### ANTES:
 	
 ![7](https://github.com/MNahVR/Sred-Final/blob/main/1Etapa/ns1/Galeria/7.png)
@@ -152,31 +127,6 @@ $ sudo nano /etc/bind/zones/db.10.9.14.rev
 
 ### Nele vamos colocar os DNS e os IPs:
 
-
-````
-;
-; BIND reverse data file of reverse zone for local area network 10.9.14.0/24
-;
-$TTL    604800
-@       IN      SOA     grupo5.turma914.ifalara.local. root.grupo5.turma914.ifalara.local. (
-                              2022030900         ; Serial
-                         604800         ; Refresh
-                          86400         ; Retry
-                        2419200         ; Expire
-                         604800 )       ; Negative Cache TTL
-
-; name servers
-@      IN      NS      ns1.grupo5.turma914.ifalara.local.
-@      IN      NS      ns2.grupo5.turma914.ifalara.local.
-
-; PTR Records
-121   IN      PTR     ns1.grupo5.turma914.ifalara.local.
-129   IN      PTR     ns2.grupo5.turma914.ifalara.local.
-115   IN      PTR     gw.grupo5.turma914.ifalara.local.
-104   IN      PTR     smb.grupo5.turma914.ifalara.local.
-221   IN      PTR     www.grupo5.turma914.ifalara.local.
-222   IN      PTR     bd.grupo5.turma914.ifalara.local.
-````
 ### ANTES:
 	
 ![10](https://github.com/MNahVR/Sred-Final/blob/main/1Etapa/ns1/Galeria/10.png)
@@ -296,7 +246,7 @@ network:
       nameservers:
         addresses:
           - 10.9.14.121
-          - 10.9.14.115
+          - 10.9.14.129
         search: [grupo5.turma914.ifalara.local]
     ens192:
       addresses: [192.168.14.35/29]
@@ -324,7 +274,8 @@ $ ping google.com
 
 
 
-## Na máquina ns2, é necessário configurar o Dns Slave com os dominios corretos
+## 3.2 - Configuração da máquina ns2, 
+### Nela vamos configurar o Dns Slave com os dominios corretos
 
 ## 1º passo - Corrigir o nome da maquina, colocando de acordo com a planilha de acompanhamento
 ````
@@ -373,7 +324,7 @@ network:
       nameservers:
         addresses:
           - 10.9.14.1		
-          - 10.9.14.115
+          - 10.9.14.129
         search: [grupo5.turma914.ifalara.local]
     ens192:
       addresses: [192.168.14.36/29]
